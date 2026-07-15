@@ -104,6 +104,59 @@ const tagColors = {
   Systems: '#f39c12',
 }
 
+// ── Featured internship ──
+const experience = {
+  role: 'Frontend – Full Stack Developer Intern',
+  company: 'Equinext Strategies LLP',
+  duration: 'June 2026 – Present',
+  description:
+    'Contributing to a production-grade mutual fund analytics platform used for wealth management. ' +
+    'Working on interactive dashboards, financial APIs, data visualization, and investment analytics ' +
+    'using modern web technologies.',
+  resume: 'https://drive.google.com/file/d/100JbEqRy5GPPYhkNZW2mQMwJgZhskb9Y/view?usp=sharing',
+}
+
+// What I actually built. Each `metric` is a PLACEHOLDER — swap the text in
+// brackets for a real number, or set metric: '' to hide that chip entirely.
+const contributions = [
+  {
+    text: 'Built responsive mutual-fund analytics dashboards in Next.js and React — surfacing NAV history, benchmark comparison, and holdings analysis.',
+    metric: '[ N ] dashboard views',
+  },
+  {
+    text: 'Integrated REST APIs for fund search, NAV history, and benchmark data into a single normalized data layer.',
+    metric: '[ N ] APIs unified',
+  },
+  {
+    text: 'Designed a database-first fallback with timeout handling that keeps dashboards live when third-party APIs are slow or down.',
+    metric: '[ X ]% fewer failed loads',
+  },
+  {
+    text: 'Assisted in financial data ingestion and validation pipelines for investment datasets.',
+    metric: '[ N ] funds tracked',
+  },
+  {
+    text: 'Built reusable chart and table components with Recharts, shared across the dashboard.',
+    metric: 'reused in [ N ] places',
+  },
+]
+
+const expTechStack = ['Next.js', 'React', 'JavaScript', 'SQLite', 'REST APIs', 'Tailwind CSS', 'Recharts', 'Git', 'GitHub', 'Postman', 'Render', 'Vercel']
+
+const challenges = [
+  'Unreliable third-party financial APIs',
+  'Keeping dashboards responsive with heavy data',
+  'Working with real, messy financial datasets',
+  'Designing resilient fallback strategies',
+]
+
+const learnings = [
+  'Fintech product development',
+  'Financial APIs & data modeling',
+  'Production debugging under real usage',
+  'Modern React / Next.js architecture',
+]
+
 export default function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [menuOpen, setMenuOpen] = useState(false)
@@ -141,7 +194,7 @@ export default function App() {
     setSending(false)
   }
 
-  const navLinks = ['home', 'about', 'projects', 'contact']
+  const navLinks = ['home', 'experience', 'projects', 'about', 'contact']
   const visibleProjects = showAll ? projects : projects.filter(p => p.featured)
 
   return (
@@ -241,7 +294,7 @@ export default function App() {
           }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)', display: 'block', animation: 'pulse 2s infinite' }} />
             <span style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--accent)', letterSpacing: '0.08em' }}>
-              Available for internships & placements
+              Interning @ Equinext Strategies · Open to SDE roles
             </span>
           </div>
 
@@ -252,12 +305,19 @@ export default function App() {
             Kshitiz Kumar
           </h1>
 
-          {/* punchy tagline */}
+          {/* role subtitle */}
           <p style={{
-            fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 500,
-            color: 'var(--accent)', marginBottom: '1.25rem', letterSpacing: '-0.01em',
+            fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 600,
+            color: 'var(--accent)', marginBottom: '0.4rem', letterSpacing: '-0.01em', lineHeight: 1.3,
           }}>
-            I build clean, fast web experiences.
+            Frontend &amp; Full Stack Developer Intern{' '}
+            <span style={{ color: 'var(--text2)', fontWeight: 500 }}>@ Equinext Strategies LLP</span>
+          </p>
+          <p style={{
+            fontSize: 'clamp(0.95rem, 1.9vw, 1.15rem)', fontWeight: 500,
+            color: 'var(--text2)', marginBottom: '1.75rem', letterSpacing: '-0.005em',
+          }}>
+            Building Mutual Fund Analytics &amp; Wealth Management Products
           </p>
 
           <p style={{
@@ -266,7 +326,7 @@ export default function App() {
           }}>
             B.Tech CS student at IET DAVV, Indore. I turn ideas into full-stack products —
             from React dashboards and REST APIs to raw C++ networking tools.
-            Currently targeting SDE internships and campus placements.
+            Currently interning in fintech and open to full-time SDE roles.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '4rem' }}>
@@ -317,6 +377,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ── FEATURED EXPERIENCE (internship) ── */}
+      <ExperienceSection />
 
       {/* ── PROJECTS (moved up, before About) ── */}
       <section id="projects" style={{
@@ -490,7 +553,7 @@ export default function App() {
           }}>
             <span style={{ fontFamily: 'var(--font)', fontSize: '9px', fontWeight: 700, color: 'var(--accent)' }}>KK</span>
           </div>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--text3)' }}>© 2025 Kshitiz Kumar</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--text3)' }}>© 2026 Kshitiz Kumar</span>
         </div>
         <span style={{ fontSize: '12px', color: 'var(--text3)' }}>Built with React · Deployed on Vercel</span>
       </footer>
@@ -508,6 +571,13 @@ export default function App() {
           .desktop-nav { display: flex !important; }
           .hamburger { display: none !important; }
           .nav-name { display: inline !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.001ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.001ms !important;
+          }
         }
       `}</style>
     </div>
@@ -643,5 +713,251 @@ function ContactItem({ icon, value, href }) {
         : <span style={{ fontSize: '14px', color: 'var(--text2)' }}>{value}</span>
       }
     </div>
+  )
+}
+
+/* ──────────────────────────────────────────────
+   FEATURED EXPERIENCE — Equinext Strategies LLP
+   ────────────────────────────────────────────── */
+
+function ExperienceSection() {
+  return (
+    <section id="experience" aria-label="Featured experience at Equinext Strategies LLP" style={{
+      padding: 'clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)',
+      borderTop: '1px solid var(--border)',
+      background: 'var(--bg)',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      {/* ambient glow */}
+      <div style={{
+        position: 'absolute', top: '-5%', right: '5%', width: '480px', height: '480px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(0,212,170,0.06) 0%, transparent 70%)', pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative' }}>
+
+        {/* header card */}
+        <Reveal>
+          <SectionLabel>Featured Experience</SectionLabel>
+          <HoverCard style={{ padding: 'clamp(1.5rem, 4vw, 2.25rem)', marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1.25rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+              <div style={{ flex: 1, minWidth: '260px' }}>
+                <span style={{
+                  display: 'inline-block', padding: '3px 10px', borderRadius: '100px',
+                  fontSize: '11px', fontWeight: 600, letterSpacing: '0.05em',
+                  background: 'var(--accent-dim)', color: 'var(--accent)',
+                  border: '1px solid rgba(0,212,170,0.25)', marginBottom: '0.85rem',
+                }}>Internship · Fintech</span>
+                <h2 style={{ fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+                  {experience.role}
+                </h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '0.6rem' }}>
+                  <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--accent)' }}>{experience.company}</span>
+                  <span style={{ color: 'var(--text3)' }}>·</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontFamily: 'var(--mono)', fontSize: '13px', color: 'var(--text2)' }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--accent)', display: 'block', animation: 'pulse 2s infinite' }} />
+                    {experience.duration}
+                  </span>
+                </div>
+              </div>
+              <a href={experience.resume} target="_blank" rel="noreferrer" aria-label="View resume (opens in a new tab)" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '7px', whiteSpace: 'nowrap',
+                padding: '0.6rem 1.2rem', borderRadius: '6px',
+                border: '1px solid var(--border2)', color: 'var(--text)',
+                fontSize: '13px', fontWeight: 600, transition: 'border-color 0.2s, color 0.2s',
+              }}
+                onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)' }}
+                onMouseOut={e => { e.currentTarget.style.borderColor = 'var(--border2)'; e.currentTarget.style.color = 'var(--text)' }}
+              >
+                <Icon name="doc" size={15} /> View Resume ↗
+              </a>
+            </div>
+            <p style={{ color: 'var(--text2)', lineHeight: 1.85, fontSize: '15px', maxWidth: '760px' }}>
+              {experience.description}
+            </p>
+          </HoverCard>
+        </Reveal>
+
+        {/* what I built — one focused list, replacing the three icon-card grids */}
+        <Reveal>
+          <BlockHeading>What I built</BlockHeading>
+          <HoverCard style={{ padding: 'clamp(1.25rem, 3vw, 1.9rem)' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column' }}>
+              {contributions.map((c, i) => (
+                <li key={i} style={{
+                  display: 'flex', gap: '14px', alignItems: 'baseline',
+                  padding: `${i === 0 ? '0' : '1.15rem'} 0 ${i === contributions.length - 1 ? '0' : '1.15rem'}`,
+                  borderBottom: i < contributions.length - 1 ? '1px solid var(--border)' : 'none',
+                }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: '12px', fontWeight: 500, color: 'var(--accent)', flexShrink: 0 }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p style={{ fontSize: '14.5px', color: 'var(--text)', lineHeight: 1.65, flex: 1 }}>
+                    {c.text}
+                    {c.metric && <MetricChip>{c.metric}</MetricChip>}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </HoverCard>
+        </Reveal>
+
+        {/* tech stack */}
+        <Reveal>
+          <BlockHeading>Tech stack</BlockHeading>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            {expTechStack.map(t => <TechBadge key={t}>{t}</TechBadge>)}
+          </div>
+        </Reveal>
+
+        {/* challenges & learnings */}
+        <Reveal>
+          <BlockHeading>Challenges &amp; what I took away</BlockHeading>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            <ListCard title="Challenges" items={challenges} accent="#f39c12" icon="shield" />
+            <ListCard title="What I learned" items={learnings} accent="#00d4aa" icon="grad" />
+          </div>
+        </Reveal>
+
+      </div>
+    </section>
+  )
+}
+
+function BlockHeading({ children }) {
+  return (
+    <h3 style={{
+      fontSize: 'clamp(1.15rem,2.2vw,1.5rem)', fontWeight: 700,
+      letterSpacing: '-0.02em', margin: 'clamp(2.5rem,5vw,3.5rem) 0 1.25rem',
+    }}>{children}</h3>
+  )
+}
+
+// Reusable hover-lift card — same idiom as ProjectCard.
+function HoverCard({ children, style }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: hovered ? 'var(--bg3)' : 'var(--bg2)',
+        border: `1px solid ${hovered ? 'var(--accent)' : 'var(--border)'}`,
+        borderRadius: '12px',
+        transition: 'background 0.2s, border-color 0.25s, transform 0.2s, box-shadow 0.2s',
+        transform: hovered ? 'translateY(-3px)' : 'translateY(0)',
+        boxShadow: hovered ? '0 8px 32px rgba(0,212,170,0.08)' : 'none',
+        ...style,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+// Inline placeholder for a real metric — styled as clearly "fill me in" (amber, dashed).
+// Replace the bracketed text in the `contributions` array, or set metric: '' to hide it.
+function MetricChip({ children }) {
+  return (
+    <span style={{
+      display: 'inline-block', marginLeft: '8px', verticalAlign: 'baseline',
+      padding: '1px 8px', borderRadius: '5px',
+      fontFamily: 'var(--mono)', fontSize: '11.5px', fontWeight: 500,
+      color: '#f5b544', background: 'rgba(243,156,18,0.08)',
+      border: '1px dashed rgba(243,156,18,0.45)', whiteSpace: 'nowrap',
+    }}>{children}</span>
+  )
+}
+
+function TechBadge({ children }) {
+  const [h, setH] = useState(false)
+  return (
+    <span
+      onMouseEnter={() => setH(true)}
+      onMouseLeave={() => setH(false)}
+      style={{
+        padding: '6px 13px', background: 'var(--bg3)',
+        border: `1px solid ${h ? 'var(--accent)' : 'var(--border)'}`,
+        borderRadius: '6px', fontFamily: 'var(--mono)', fontSize: '12.5px',
+        color: h ? 'var(--accent)' : 'var(--text)',
+        transition: 'border-color 0.2s, color 0.2s', cursor: 'default',
+      }}
+    >{children}</span>
+  )
+}
+
+function ListCard({ title, items, accent, icon }) {
+  return (
+    <HoverCard style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
+        <IconBadge name={icon} color={accent} />
+        <h4 style={{ fontSize: '1.05rem', fontWeight: 700 }}>{title}</h4>
+      </div>
+      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '9px' }}>
+        {items.map((it, i) => (
+          <li key={i} style={{ fontSize: '13.5px', color: 'var(--text2)', display: 'flex', gap: '9px', lineHeight: 1.5 }}>
+            <span style={{ color: accent, flexShrink: 0, marginTop: '3px', fontSize: '9px' }}>▸</span>
+            {it}
+          </li>
+        ))}
+      </ul>
+    </HoverCard>
+  )
+}
+
+// Accent-tinted square holding an inline SVG icon.
+function IconBadge({ name, color = '#00d4aa', size = 20 }) {
+  return (
+    <div style={{
+      width: '38px', height: '38px', borderRadius: '9px',
+      background: `${color}1a`, border: `1px solid ${color}40`,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      color, flexShrink: 0,
+    }}>
+      <Icon name={name} size={size} />
+    </div>
+  )
+}
+
+// Fade + rise on first scroll into view. Honors prefers-reduced-motion.
+function Reveal({ children }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(true)
+      return
+    }
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setVisible(true); obs.disconnect() }
+    }, { threshold: 0.12 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translateY(0)' : 'translateY(14px)',
+      transition: 'opacity 0.6s ease, transform 0.6s ease',
+    }}>{children}</div>
+  )
+}
+
+// Minimal inline stroke icons (currentColor).
+const ICONS = {
+  doc: <><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v5h5" /><path d="M9 13h6" /><path d="M9 17h6" /></>,
+  shield: <><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" /><path d="M12 9v4" /><path d="M12 16h.01" /></>,
+  grad: <><path d="M3 8l9-4 9 4-9 4z" /><path d="M7 10.5V15c0 1.1 2.2 2 5 2s5-.9 5-2v-4.5" /><path d="M21 8.5v4.5" /></>,
+}
+
+function Icon({ name, size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+      aria-hidden="true" focusable="false">
+      {ICONS[name] || null}
+    </svg>
   )
 }
