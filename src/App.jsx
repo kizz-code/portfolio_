@@ -113,7 +113,7 @@ const experience = {
     'Contributing to a production-grade mutual fund analytics platform used for wealth management. ' +
     'Working on interactive dashboards, financial APIs, data visualization, and investment analytics ' +
     'using modern web technologies.',
-  resume: 'https://drive.google.com/file/d/100JbEqRy5GPPYhkNZW2mQMwJgZhskb9Y/view?usp=sharing',
+  resume: 'https://drive.google.com/file/d/1wmWiXRKunmpl2MucPy0io5eCn_JpLCMW/view?usp=sharing',
 }
 
 // What I actually built during the internship.
