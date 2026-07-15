@@ -116,28 +116,22 @@ const experience = {
   resume: 'https://drive.google.com/file/d/100JbEqRy5GPPYhkNZW2mQMwJgZhskb9Y/view?usp=sharing',
 }
 
-// What I actually built. Each `metric` is a PLACEHOLDER — swap the text in
-// brackets for a real number, or set metric: '' to hide that chip entirely.
+// What I actually built during the internship.
 const contributions = [
   {
     text: 'Built responsive mutual-fund analytics dashboards in Next.js and React — surfacing NAV history, benchmark comparison, and holdings analysis.',
-    metric: '[ N ] dashboard views',
   },
   {
     text: 'Integrated REST APIs for fund search, NAV history, and benchmark data into a single normalized data layer.',
-    metric: '[ N ] APIs unified',
   },
   {
     text: 'Designed a database-first fallback with timeout handling that keeps dashboards live when third-party APIs are slow or down.',
-    metric: '[ X ]% fewer failed loads',
   },
   {
     text: 'Assisted in financial data ingestion and validation pipelines for investment datasets.',
-    metric: '[ N ] funds tracked',
   },
   {
     text: 'Built reusable chart and table components with Recharts, shared across the dashboard.',
-    metric: 'reused in [ N ] places',
   },
 ]
 
@@ -794,7 +788,6 @@ function ExperienceSection() {
                   </span>
                   <p style={{ fontSize: '14.5px', color: 'var(--text)', lineHeight: 1.65, flex: 1 }}>
                     {c.text}
-                    {c.metric && <MetricChip>{c.metric}</MetricChip>}
                   </p>
                 </li>
               ))}
@@ -852,20 +845,6 @@ function HoverCard({ children, style }) {
     >
       {children}
     </div>
-  )
-}
-
-// Inline placeholder for a real metric — styled as clearly "fill me in" (amber, dashed).
-// Replace the bracketed text in the `contributions` array, or set metric: '' to hide it.
-function MetricChip({ children }) {
-  return (
-    <span style={{
-      display: 'inline-block', marginLeft: '8px', verticalAlign: 'baseline',
-      padding: '1px 8px', borderRadius: '5px',
-      fontFamily: 'var(--mono)', fontSize: '11.5px', fontWeight: 500,
-      color: '#f5b544', background: 'rgba(243,156,18,0.08)',
-      border: '1px dashed rgba(243,156,18,0.45)', whiteSpace: 'nowrap',
-    }}>{children}</span>
   )
 }
 
