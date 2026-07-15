@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 
 const EMAILJS_SERVICE_ID = 'service_shnh4aa'
-const EMAILJS_TEMPLATE_ID = 'template_81brfpe'
+const EMAILJS_TEMPLATE_ID = 'template_g22e5ls'
 const EMAILJS_PUBLIC_KEY = 'x7NMbIh92oCWzIwVh'
 
 const projects = [
@@ -175,10 +175,12 @@ export default function App() {
     setFormStatus(null)
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        // `name` fills the template's subject + body; `from_name`/`from_email`
+        // fill the From Name and Reply To fields. To Email is hardcoded in the template.
+        name: formState.name,
         from_name: formState.name,
         from_email: formState.email,
         message: formState.message,
-        to_email: 'kshitizashok2@gmail.com',
       }, EMAILJS_PUBLIC_KEY)
       setFormStatus('success')
       setFormState({ name: '', email: '', message: '' })
